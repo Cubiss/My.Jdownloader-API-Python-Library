@@ -527,6 +527,15 @@ class Downloads:
         self.device = device
         self.url = "/downloadsV2"
 
+    def moveto_new_package(self, new_package_name: str, download_path: str, link_ids=None, package_ids=None):
+        link_ids = link_ids if link_ids else []
+        package_ids = package_ids if package_ids else []
+
+        params = [link_ids, package_ids, new_package_name, download_path]
+        resp = self.device.action(self.url + "/movetoNewPackage", params)
+        return resp
+        pass
+
     def query_links(self,
                     params=[{
                         "bytesTotal": True,
