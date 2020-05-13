@@ -465,12 +465,29 @@ class Linkgrabber:
         """
         pass
 
-    def query_packages(self):
+    def query_packages(self, params=[{
+                    "availableOfflineCount": True,
+                    "availableOnlineCount": True,
+                    "availableTempUnknownCount": True,
+                    "availableUnknownCount": True,
+                    "bytesTotal": True,
+                    "childCount": True,
+                    "comment": True,
+                    "enabled": True,
+                    "hosts": True,
+                    "maxResults": 5000,
+                    "packageUUIDs": [],
+                    "priority": False,
+                    "saveTo": True,
+                    "startAt": 0,
+                    "status": True
+                  }]):
         """
         No idea what parameters i have to pass and/or i don't know what it does.
         If i find out i will implement it :P
         """
-        pass
+        resp = self.device.action("/linkgrabberv2/queryPackages", params)
+        return resp
 
     def move_packages(self):
         """
