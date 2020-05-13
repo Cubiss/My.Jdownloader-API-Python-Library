@@ -536,6 +536,14 @@ class Downloads:
         return resp
         pass
 
+    def set_download_directory(self, directory: str, package_ids=None):
+        package_ids = package_ids if package_ids else []
+
+        params = [directory, package_ids]
+        resp = self.device.action(self.url + "/setDownloadDirectory", params)
+        return resp
+        pass
+
     def query_links(self,
                     params=[{
                         "bytesTotal": True,
